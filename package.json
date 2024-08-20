@@ -1,0 +1,26 @@
+{
+  "name": "@omnedia/ngx-shiny-text",
+  "description": "A simple component library to animate text.",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^17.3.0",
+    "@angular/core": "^17.3.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "npm",
+    "words",
+    "text",
+    "shiny",
+    "shine",
+    "animation"
+  ],
+  "repository": {
+    "url": "https://github.com/omnedia/ngx-shiny-text"
+  },
+  "author": "Markus Block (markus.block@omnedia.com)",
+  "license": "MIT"
+}
