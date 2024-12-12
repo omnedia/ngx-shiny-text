@@ -1,5 +1,13 @@
 # ngx-shiny-text
 
+<a href="https://ngxui.com" target="_blank" style="display: flex;gap: .5rem;align-items: center;cursor: pointer; padding: 0 0 0 0; height: fit-content;">
+  <img src="https://ngxui.com/assets/img/ngxui-logo.png" style="width: 64px;height: 64px;">
+  <p style="font-weight: bold; padding: 0; margin: 0; font-size: 4rem">NGXUI</p>
+</a>
+
+This Library is part of the NGXUI ecosystem. <br>
+View all available components at https://ngxui.com
+
 `@omnedia/ngx-shiny-text` is an Angular library that provides a shimmering text animation effect. This component allows you to easily add a glowing, moving shimmer effect over text, making your text stand out with a visually appealing style.
 
 ## Features
@@ -21,21 +29,23 @@ npm install @omnedia/ngx-shiny-text
 Import the `NgxShinyTextComponent` in your Angular module or component:
 
 ```typescript
-import { NgxShinyTextComponent } from '@omnedia/ngx-shiny-text';
+import {NgxShinyTextComponent} from '@omnedia/ngx-shiny-text';
 
 @Component({
   ...
-  imports: [
-    ...
-    NgxShinyTextComponent,
-  ],
+    imports:
+[
   ...
+    NgxShinyTextComponent,
+],
+...
 })
 ```
 
 Use the component in your template:
 
 ```html
+
 <om-shiny-text
   [text]="'Shiny Text Effect!'"
   [shimmerColor]="'rgba(255, 255, 255, 0.8)'"
@@ -48,6 +58,7 @@ Use the component in your template:
 ## API
 
 ```html
+
 <om-shiny-text
   [text]="text"
   [shimmerColor]="shimmerColor"
@@ -56,6 +67,7 @@ Use the component in your template:
   styleClass="your-custom-class"
 ></om-shiny-text>
 ```
+
 - `text` (required): The text content to be displayed with the shimmering effect.
 - `shimmerColor` (optional): The color of the shimmer effect. Accepts any valid CSS color value.
 - `textColor` (optional): The color of the text. Accepts any valid CSS color value.
@@ -65,6 +77,7 @@ Use the component in your template:
 ## Example
 
 ```html
+
 <om-shiny-text
   [text]="'Welcome to our site!'"
   [shimmerColor]="'rgba(255, 215, 0, 0.8)'"
