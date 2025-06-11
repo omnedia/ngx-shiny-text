@@ -6,10 +6,10 @@
   display: inline-flex;
   position: relative;
   background: linear-gradient(
-    90deg,
-    transparent,
-    var(--shimmer-color) 50%,
-    transparent
+      90deg,
+      transparent,
+      var(--shimmer-color) 50%,
+      transparent
   );
   background-size: var(--shimmer-width) 100%;
   background-position: 0 0;
@@ -19,6 +19,10 @@
   color: var(--text-color);
 
   animation: om-shimmer 8s infinite;
+
+  &.paused {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes om-shimmer {

@@ -1,5 +1,16 @@
-import { CommonModule } from "@angular/common";
-import { Component, Input, OnInit } from "@angular/core";
+import {CommonModule, isPlatformBrowser} from "@angular/common";
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnDestroy,
+  PLATFORM_ID,
+  signal,
+  ViewChild
+} from "@angular/core";
 
 @Component({
   selector: "om-shiny-text",
@@ -7,8 +18,11 @@ import { Component, Input, OnInit } from "@angular/core";
   imports: [CommonModule],
   templateUrl: "./ngx-shiny-text.component.html",
   styleUrl: "./ngx-shiny-text.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NgxShinyTextComponent implements OnInit {
+export class NgxShinyTextComponent implements AfterViewInit, OnDestroy {
+  @ViewChild("OmShinyTextWrapper") shinyTextRef!: ElementRef<HTMLElement>;
+
   @Input("styleClass")
   styleClass?: string;
 
@@ -32,9 +46,30 @@ export class NgxShinyTextComponent implements OnInit {
 
   style: any = {};
 
-  ngOnInit(): void {
+  isInView = signal(false);
+  private intersectionObserver?: IntersectionObserver;
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
+  }
+
+  ngAfterViewInit(): void {
     if (!this.text) {
       throw new Error("om-shiny-text: no text was given to the component!");
+    }
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.intersectionObserver = new IntersectionObserver(([entry]) => {
+        this.isInView.set(entry.isIntersecting);
+      });
+      this.intersectionObserver.observe(this.shinyTextRef.nativeElement);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
     }
   }
 }
